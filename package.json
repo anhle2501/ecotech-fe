@@ -1,0 +1,23 @@
+{
+  "name": "ecotech-fe",
+  "version": "1.0.0",
+  "source": "public/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "watch-css": "tailwindcss -i ./public/styles.css -o ./dist/output.css --watch",
+    "build-css": "tailwindcss build -o ./dist/output.css"
+  },
+  "devDependencies": {
+    "parcel": "^2.10.0",
+    "process": "^0.11.10"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "engines": {
+    "node": ">= 12"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

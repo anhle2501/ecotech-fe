@@ -1,7 +1,6 @@
-import React from "react";
-import Search from "./icon/Search";
+import React from 'react';
 
-export default function SearchBox({className=null}) {
+export default function SearchBox({ className = null }) {
   return (
     <>
       <div className={'relative rounded-lg shadow-sm ' + className}>

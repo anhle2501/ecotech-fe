@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pencil from "./icon/Pencil";
 import Pagination from "./Pagination";
 
@@ -138,6 +138,12 @@ export default function Table() {
     console.log("test");
   }
 
+  useEffect(() => {
+
+  }) 
+
+  
+
   return (
     <>
       <div className='grow overflow-x-auto overflow-y-auto '>
@@ -145,7 +151,7 @@ export default function Table() {
           <thead className={hdStype + " bg-slate-300 "}>
             <tr className=''>
               {headData.map((e, index) => (
-                <th key={index}  className={hdStype + " bg-slate-300 sticky top-0"}>{e}</th>
+                <th key={index}  className={hdStype + " bg-slate-300 sticky top-0 border"}>{e}</th>
               ))}
             </tr>
           </thead>
@@ -159,7 +165,7 @@ export default function Table() {
                 <td className={tdStyle + " text-center"}>
                 
                   <button className='inline-block'>
-                    <Pencil className={"w-3 invisible group-hover:visible"} />
+                    <Pencil className={"w-0 group-hover:w-3 group-hover:visible collapse"} />
                   </button>
                    <input className='w-6 inline-block' type='checkbox' />
                    
@@ -181,9 +187,13 @@ export default function Table() {
           </tbody>
         </table>
       </div>
-      <div className='flex flex-row sticky bottom-0 bg-white w-full'>
+      <div className='flex flex-row sticky bottom-0 bg-white w-full p-1 border border-slate-300'>
         <div className='grow'>Tổng số: </div>
-        <div className='grow'>Bảng ghi trên trang </div>
+        <select className='grow border border-cyan-950 text-center'>
+            <option className='text-center'>20 dữ liệu trên trang</option>
+            <option className='text-center'>30 dữ liệu trên trang</option>
+            <option className='text-center'>40 dữ liệu trên trang</option>
+        </select>
         <Pagination />
       </div>
     </>

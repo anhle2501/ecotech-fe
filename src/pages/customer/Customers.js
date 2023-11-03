@@ -1,9 +1,9 @@
+
 import React from 'react';
 
-export function Layout() {
+export default function Customers() {
   return (
     <>
-      <h1>Hi</h1>
     </>
   );
 }

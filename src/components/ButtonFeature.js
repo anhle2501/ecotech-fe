@@ -7,9 +7,9 @@ export default function ButtonFeature({
 }) {
   return (
     <>
-      <button className=''>
+      <button className='relative'>
         {icon}
-        <p className={'inline-block relative top-1.5 right-1 ' + className }>{name}</p>
+        <p className={'inline-block relative top-1.5 right-1' + className }>{name}</p>
       </button>
     </>
   );

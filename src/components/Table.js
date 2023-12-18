@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Pencil from "./icon/Pencil";
 import Pagination from "./Pagination";
+import { Link } from "react-router-dom";
 
 const headData = [
   "Chọn",
@@ -11,123 +12,127 @@ const headData = [
   "Email",
   "Địa chỉ",
   "Thuộc tổ chức",
+  "Ngày tạo",
   "Người tạo",
+  "Thay đổi lúc",
+  "Thay đổi bởi",
+  "Mô tả"
 ];
 
-const data = [
-  {
-    stt: "1",
-    code: "KH00001",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00002",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH000013",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00004",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00005",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00006",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00007",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00008",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00009",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-  {
-    stt: "1",
-    code: "KH00010",
-    fullName: "Nhựt Anh",
-    title: "Giám đốc",
-    phone: "0374749933",
-    email: "nhut.anh2501@gmail.com",
-    address: "40/20 Lữ Gia",
-    organization: "CTY A",
-    createBy: "Nhựt Anh",
-  },
-];
+// const data = [
+//   {
+//     id: "1",
+//     code: "KH00001",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "2",
+//     code: "KH00002",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "3",
+//     code: "KH000013",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "4",
+//     code: "KH00004",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "5",
+//     code: "KH00005",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "6",
+//     code: "KH00006",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "7",
+//     code: "KH00007",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "8",
+//     code: "KH00008",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "9",
+//     code: "KH00009",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+//   {
+//     id: "10",
+//     code: "KH00010",
+//     fullName: "Nhựt Anh",
+//     title: "Giám đốc",
+//     phone: "0374749933",
+//     email: "nhut.anh2501@gmail.com",
+//     address: "40/20 Lữ Gia",
+//     organization: "CTY A",
+//     createBy: "Nhựt Anh",
+//   },
+// ];
 
-export default function Table() {
+export default function Table({data}) {
   const [seletedRow, setSelectedRow] = useState([]);
   const [isOn, setIsOn] = useState(false);
 
@@ -135,11 +140,16 @@ export default function Table() {
   let tdStyle = "border border-slate-300 p-2";
 
   function handleOnClickTableRow(e) {
-    console.log("test");
+    console.log(e);
+
+  }
+
+  function handleOnClickCheckBox(e) {
+    
   }
 
   useEffect(() => {
-
+    console.log(data)
   }) 
 
   
@@ -160,18 +170,16 @@ export default function Table() {
               <tr
                 key={index}
                 className='hover:bg-slate-100 group '
-                onClick={handleOnClickTableRow}
               >
                 <td className={tdStyle + " text-center"}>
-                
-                  <button className='inline-block'>
+                  <Link to={e.id} className='inline-block w-0 group-hover:w-3 group-hover:visible collapse'>
                     <Pencil className={"w-0 group-hover:w-3 group-hover:visible collapse"} />
-                  </button>
-                   <input className='w-6 inline-block' type='checkbox' />
+                  </Link>
+                   <input className='w-6 inline-block' type='checkbox'  />
                    
                 </td>
-                <td className={tdStyle}>{e.code} {index}</td>
-                <td className={tdStyle}>{e.fullName}</td>
+                <td className={tdStyle}><Link to={e.id} className={'border-b-2 border-b-blue-700 text-blue-700'}>{e.code} </Link></td>
+                <td className={tdStyle}>{e.name}</td>
                 <td className={tdStyle}>{e.title}</td>
                 <td className={tdStyle}>{e.phone}</td>
                 <td className={tdStyle}>
@@ -181,7 +189,11 @@ export default function Table() {
                 </td>
                 <td className={tdStyle}>{e.address}</td>
                 <td className={tdStyle}>{e.organization}</td>
+                <td className={tdStyle}>{e.createAt}</td>
                 <td className={tdStyle}>{e.createBy}</td>
+                <td className={tdStyle}>{e.lastModifiedDate}</td>
+                <td className={tdStyle}>{e.lastModifiedBy}</td>
+                <td className={tdStyle}>{e.description}</td>
               </tr>
             ))}
           </tbody>

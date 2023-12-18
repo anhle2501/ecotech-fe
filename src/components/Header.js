@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { NavLink } from "react-router-dom";
 import Logo from './Logo';
 import SearchBox from './SearchBox';
 import BellNotification from './BellNotification';
@@ -21,13 +22,14 @@ export default function Header() {
   const [profileMenu, setProfileMenu] = useState(false);
 
   function openProfileMenu() {
+    console.log(profileMenu)
     setProfileMenu(!profileMenu)
   }
   return (
     <>
       {profileMenu && <ProfileMenu children={<Profile />} />}
 
-      <div className='flex flex-row gap-4 p-0.5 '>
+      <div className='flex flex-row gap-4 p-0.5 px-4'>
         <div className='self-center hover:bg-gray-200 rounded-lg'>
           <ToolTips children={<Home />} content={'Trang chủ'} className='-bottom-8 -left-0' />
         </div>
@@ -43,17 +45,42 @@ export default function Header() {
         <div className='self-center hover:bg-gray-200 rounded-lg'>
           <ToolTips children={<BellNotification />} content={'Thông báo'} />
         </div>
-        <div className='self-center hover:bg-gray-200 rounded-lg'>
-          <button onClick={openProfileMenu} ><Profile /> </button>
+        <div className={'self-center ' + (profileMenu === true ? 'bg-blue-200 rounded-lg': 'hover:bg-gray-200 rounded-lg ')}>
+          <button onClick={openProfileMenu} ><Profile /></button>
         </div>
       </div>
-      <div className='flex flex-row gap-4 shadow-2xl'>
+      <div className='flex flex-row gap-4 shadow-2xl px-4'>
         <FeatureList
           listFeatures={[
-            <ButtonFeature name='Bàn làm việc' icon={<ChartPie />} />,
-            <ButtonFeature name='Khách hàng' icon={<Identification />} />,
-            <ButtonFeature name='Đơn hàng' icon={<ShoppingCart />} />,
-            <ButtonFeature name='Người dùng' icon={<UserGroup />} />,
+            <NavLink
+              to="/dashboard"
+              className={({ isActive, isPending }) =>
+                isPending ? "border-b-4" : isActive ? "border-b-4 text-blue-900 border-b-blue-900 py-1.5 px-0.5 slide" : ""
+              }
+            >
+              <ButtonFeature name='Bàn làm việc' icon={<ChartPie />} />
+            </NavLink>,
+            <NavLink
+              to="/customers"
+              className={({ isActive, isPending, isTransitioning }) =>
+                isPending ? "border-b-4" : isActive ? "border-b-4 text-blue-900 border-b-blue-900 py-1.5 px-0.5 slide" : ""
+              }
+            >
+              <ButtonFeature name='Khách hàng' icon={<Identification />} />  </NavLink>,
+            <NavLink
+              to="/orders"
+              className={({ isActive, isPending, isTransitioning }) =>
+                isPending ? "border-b-4" : isActive ? "border-b-4 text-blue-900 border-b-blue-900 py-1.5 px-0.5 slide" : ""
+              }
+            >
+              <ButtonFeature name='Đơn hàng' icon={<ShoppingCart />} /></NavLink>,
+            <NavLink
+              to="/users"
+              className={({ isActive, isPending, isTransitioning }) =>
+                isPending ? "border-b-4" : isActive ? "border-b-4 text-blue-900 border-b-blue-900 py-1.5 px-0.5 slide" : ""
+              }>
+
+              <ButtonFeature name='Người dùng' icon={<UserGroup />} /></NavLink>,
           ]}
         />
       </div>

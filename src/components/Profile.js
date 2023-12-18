@@ -11,7 +11,7 @@ export default function Profile({ className = null }) {
         className={'avatar rounded-full w-10 h-10 ' + className}
         src={user.imageUrl}
         alt={'Photo of ' + user.name}
-      />ƒ
+      />
   </>
   );
 }

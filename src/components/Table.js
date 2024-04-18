@@ -149,7 +149,7 @@ export default function Table({data}) {
   }
 
   useEffect(() => {
-    console.log(data)
+    
   }) 
 
   
@@ -166,7 +166,7 @@ export default function Table({data}) {
             </tr>
           </thead>
           <tbody className='table-row-group'>
-            {data.map((e, index) => (
+            {data ? data.map((e, index) => (
               <tr
                 key={index}
                 className='hover:bg-slate-100 group '
@@ -195,7 +195,7 @@ export default function Table({data}) {
                 <td className={tdStyle}>{e.lastModifiedBy}</td>
                 <td className={tdStyle}>{e.description}</td>
               </tr>
-            ))}
+            )) : "Không có dữ liệu !"}
           </tbody>
         </table>
       </div>

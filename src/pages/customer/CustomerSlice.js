@@ -1,5 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
 export const customerSlice = createSlice({
     name: 'customer',
@@ -21,25 +22,46 @@ export const customerSlice = createSlice({
 
     //state is initial state
     getCustomerPage: (state) => {
-        let { NODE_ENV } = process.env;
+        let { NODE_ENV, API_NAME, HOST_NAME } = process.env;
         console.log(NODE_ENV)
         if (NODE_ENV === 'development') {
             console.log('123')
             state.customerList = [{
-                id: 1,
-                code: 'test code',
-                name: 'test name',
-                address: 'test address',
-                phone: 'test phone',
-                taxCode: 'test taxCode',
-                createBy: 1,
-                createAt: new Date().getTime(),
-                description: 'test description',
-                lastModifiedBy: 1,
-                lastModifiedDate: new Date().getTime(),
-            }]
-        } else if (NODE_ENV == 'production') {
+                // id: 1,
+                // code: 'test code',
+                // name: 'test name',
+                // address: 'test address',
+                // phone: 'test phone',
+                // taxCode: 'test taxCode',
+                // createBy: 1,
+                // createAt: new Date().getTime(),
+                // description: 'test description',
+                // lastModifiedBy: 1,
+                // lastModifiedDate: new Date().getTime(),
 
+                id: "1",
+                code: "KH00001",
+                fullName: "Nhựt Anh",
+                title: "Giám đốc",
+                phone: "0374749933",
+                email: "nhut.anh2501@gmail.com",
+                address: "40/20 Lữ Gia",
+                organization: "CTY A",
+                createBy: "Nhựt Anh",
+            }]
+        } else if (NODE_ENV == 'test_api') {
+            console.log(API_NAME, NODE_ENV)
+            let authToken = "Bearer " + localStorage.getItem("accessToken")
+            axios({
+                method: 'get',
+                url:  `${HOST_NAME}/${API_NAME}/customers`,
+                headers: {
+                    "Authorization" : authToken
+                }
+              }).then(function (response) {
+                console.log('test')
+                console.log(response)
+              }).catch(err => console.log(err));
         }
     },
     getOne: (state, action, test) => {

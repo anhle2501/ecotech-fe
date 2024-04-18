@@ -12,6 +12,7 @@ export default function CustomerContents() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("CustomerContents useEffect");
     dispatch(getCustomerPage())
     
   },[dispatch]);
